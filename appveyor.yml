@@ -25,6 +25,7 @@ install:
 build: off
 
 after_test:
+ - SET PATH=%PYTHON%;%PATH%
  # Run pyinstaller
  - python -OO -m PyInstaller pmca-console.spec
  - python -OO -m PyInstaller pmca-gui.spec
