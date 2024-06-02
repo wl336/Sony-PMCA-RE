@@ -10,11 +10,11 @@ install:
  - set PATH=%PYTHON%;%PYTHON%\Scripts;%APPVEYOR_BUILD_FOLDER%;%PATH%
 
  # Install dependencies
- - python -m pip install --upgrade pip
+ - C:\Python36 -m pip install --upgrade pip
  - pip install -r requirements.txt
 
  # Log versions
- - python --version
+ - C:\Python36 --version
  - pip list --format=columns
 
  # Download libusb
@@ -26,9 +26,10 @@ build: off
 
 after_test:
  - SET PATH=%PYTHON%;%PATH%
+ - C:\Python36 --version
  # Run pyinstaller
- - python -OO -m PyInstaller pmca-console.spec
- - python -OO -m PyInstaller pmca-gui.spec
+ - C:\Python36 -OO -m PyInstaller pmca-console.spec
+ - C:\Python36 -OO -m PyInstaller pmca-gui.spec
 
 artifacts:
  - path: dist\*
