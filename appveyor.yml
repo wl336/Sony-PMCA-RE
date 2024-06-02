@@ -3,12 +3,12 @@
 version: "Build #{build}"
 
 environment:
- matrix:
-  - PYTHON: "C:\\Python36"
+ - PYTHON: C:\Python36
 
 install:
  # Path setup
  - set PATH=%PYTHON%;%PYTHON%\Scripts;%APPVEYOR_BUILD_FOLDER%;%PATH%
+ - echo %PATH%
  - python --version
 
  # Install dependencies
