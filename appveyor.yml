@@ -3,7 +3,8 @@
 version: "Build #{build}"
 
 environment:
- PYTHON: C:\Python36
+ matrix:
+  - PYTHON: "C:\\Python36"
 
 install:
  # Path setup
@@ -25,11 +26,11 @@ install:
 build: off
 
 after_test:
- - SET PATH=%PYTHON%;%PATH%
- - python36 --version
+ - set PATH=%PYTHON%;%PYTHON%\Scripts;%APPVEYOR_BUILD_FOLDER%;%PATH%
+ - python --version
  # Run pyinstaller
- - python36 -OO -m PyInstaller pmca-console.spec
- - python36 -OO -m PyInstaller pmca-gui.spec
+ - python -OO -m PyInstaller pmca-console.spec
+ - python -OO -m PyInstaller pmca-gui.spec
 
 artifacts:
  - path: dist\*
